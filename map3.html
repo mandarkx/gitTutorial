@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Visualize features by type - 4.8</title>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.8"></script>
+
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    .esri-legend {
+      background-color: white;
+      color: black;
+    }
+  </style>
+ 
+  <script>
+  require([
+    "esri/tasks/Locator",
+    "esri/Map",
+    "esri/views/MapView",
+    "dojo/domReady!"
+  ], function(
+     Locator,
+     Map,
+     MapView
+   ) {
+
+    // Create a locator task using the world geocoding service
+    var locatorTask = new Locator({
+       url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+    });
+
+    // Create the Map
+    var map = new Map({
+       basemap: "streets"
+    });
+
+    // Create the MapView
+    var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-88.039894, 30.695366],
+        zoom: 12
+    });
+ });
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+</body>
+
+</html>
